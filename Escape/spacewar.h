@@ -25,6 +25,7 @@ private:
     TextureManager playerTexture;
     TextureManager killboxTexture;
     TextureManager finishboxTexture;
+    TextureManager groundTexture;
     Ship    ship1, ship2;           // spaceships
     Planet  planet;         // the planet
 
