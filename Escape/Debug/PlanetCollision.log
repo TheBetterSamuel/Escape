@@ -1,0 +1,20 @@
+﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  entity.cpp
+D:\School\GPP Programs\GPPAsg\Escape\entity.cpp(331,48): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\School\GPP Programs\GPPAsg\Escape\entity.cpp(331,25): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\School\GPP Programs\GPPAsg\Escape\entity.cpp(332,49): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\School\GPP Programs\GPPAsg\Escape\entity.cpp(332,22): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\School\GPP Programs\GPPAsg\Escape\entity.cpp(434,52): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  winmain.cpp
+  textureManager.cpp
+  spacewar.cpp
+  ship.cpp
+  planet.cpp
+  input.cpp
+  image.cpp
+  graphics.cpp
+  game.cpp
+  Generating Code...
+  PlanetCollision.vcxproj -> D:\School\GPP Programs\GPPAsg\Escape\Debug\PlanetCollision.exe
