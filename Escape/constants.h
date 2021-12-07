@@ -88,6 +88,9 @@ const char GROUND_IMAGE[] = "pictures\\Ground.png";
 const UCHAR ESC_KEY      = VK_ESCAPE;       // escape key
 const UCHAR ALT_KEY      = VK_MENU;         // Alt key
 const UCHAR ENTER_KEY    = VK_RETURN;       // Enter key
+const UCHAR A_KEY = 'A';
+const UCHAR D_KEY = 'D';
+
 
 
 // weapon types

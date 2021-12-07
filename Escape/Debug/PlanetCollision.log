@@ -1,7 +1,5 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  player.cpp
-D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\player.cpp(18,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\player.cpp(19,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  PlanetCollision.vcxproj -> D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\Debug\PlanetCollision.exe
+  spacewar.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+  PlanetCollision.vcxproj -> D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\Debug\PlanetCollision.exe

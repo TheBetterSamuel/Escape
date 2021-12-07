@@ -79,12 +79,18 @@ void Spacewar::update()
 {
 
     // checks kep presses for movement left and right
-    if (input->isKeyDown(0x41)) {
-        player.setVelocity(VECTOR2(-playerNS::SPEED, 0));
+
+
+    if (input->isKeyDown(A_KEY))            // if move right
+    {
+        player.setX(player.getX() - frameTime * playerNS::SPEED);
     }
-    if (input->isKeyDown(0x44)) {
-        player.setVelocity(VECTOR2(playerNS::SPEED, 0));
+
+    if (input->isKeyDown(D_KEY))            // if move right
+    {
+        player.setX(player.getX() + frameTime * playerNS::SPEED);
     }
+
 
     planet.update(frameTime);
     ship1.update(frameTime);
