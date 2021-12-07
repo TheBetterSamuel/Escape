@@ -46,6 +46,10 @@ void Spacewar::initialize(HWND hwnd)
     if (!planet.initialize(this, planetNS::WIDTH, planetNS::HEIGHT, 2, &gameTextures))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing planet"));
 
+    // ground
+    if (!ground.initialize(this, groundNS::WIDTH, groundNS::HEIGHT, 2, &groundTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ground"));
+
     //player
     if (!player.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, 0, &playerTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing player"));
@@ -80,18 +84,26 @@ void Spacewar::update()
 
     // checks kep presses for movement left and right
 
+   
 
     if (input->isKeyDown(A_KEY))            // if move right
     {
         player.setX(player.getX() - frameTime * playerNS::SPEED);
     }
-
     if (input->isKeyDown(D_KEY))            // if move right
     {
         player.setX(player.getX() + frameTime * playerNS::SPEED);
     }
+    if (input->isKeyDown(S_KEY))            // if move right
+    {
+        player.setY(player.getY() + frameTime * playerNS::SPEED);
+    }
+    if (input->isKeyDown(W_KEY))            // if move right
+    {
+        player.setY(player.getY() - frameTime * playerNS::SPEED);
+    }
 
-
+    ground.update(frameTime);
     planet.update(frameTime);
     ship1.update(frameTime);
     ship2.update(frameTime);
@@ -123,6 +135,17 @@ void Spacewar::collisions()
         ship2.bounce(collisionVector, planet);
         ship2.damage(PLANET);
     }
+    if (ship2.collidesWith(player, collisionVector))
+    {
+        // bounce off planet
+        ship2.bounce(collisionVector, player);
+        ship2.damage(SHIP);
+    }
+
+    if (player.collidesWith(ground, collisionVector)) {
+        player.bounce(collisionVector, ground);
+    }
+
     // if collision between ships
     if(ship1.collidesWith(ship2, collisionVector))
     {
@@ -143,6 +166,7 @@ void Spacewar::render()
     graphics->spriteBegin();                // begin drawing sprites
 
     planet.draw();                          // add the planet to the scene
+    ground.draw();
     ship1.draw();                           // add the spaceship to the scene
     ship2.draw();                           // add the spaceship to the scene
     player.draw();

@@ -13,6 +13,7 @@
 #include "planet.h"
 #include "ship.h"
 #include "player.h"
+#include "ground.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -30,6 +31,7 @@ private:
     Ship    ship1, ship2;           // spaceships
     Planet  planet;         // the planet
     Player player;          // the player
+    Ground ground;          // the ground
 
 public:
     // Constructor

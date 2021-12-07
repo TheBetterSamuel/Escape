@@ -57,7 +57,7 @@ const char map[18][32] = {
     {'G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G'}
 };
 
-const float MOVESPEED = 50;  //movement speed of the player
+const float MOVESPEED = 200;  //movement speed of the player
 const float JUMP_DY = 20;   //starting dy of player when he jumps(decreases y g per second_)
 
 const int MAP_HEIGHT = _countof(map);
@@ -90,6 +90,8 @@ const UCHAR ALT_KEY      = VK_MENU;         // Alt key
 const UCHAR ENTER_KEY    = VK_RETURN;       // Enter key
 const UCHAR A_KEY = 'A';
 const UCHAR D_KEY = 'D';
+const UCHAR S_KEY = 'S';
+const UCHAR W_KEY = 'W';
 
 
 
