@@ -12,6 +12,7 @@
 #include "image.h"
 #include "planet.h"
 #include "ship.h"
+#include "player.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -28,6 +29,7 @@ private:
     TextureManager groundTexture;
     Ship    ship1, ship2;           // spaceships
     Planet  planet;         // the planet
+    Player player;          // the player
 
 public:
     // Constructor

@@ -57,7 +57,7 @@ const char map[18][32] = {
     {'G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G'}
 };
 
-const float MOVESPEED = 5;  //movement speed of the player
+const float MOVESPEED = 50;  //movement speed of the player
 const float JUMP_DY = 20;   //starting dy of player when he jumps(decreases y g per second_)
 
 const int MAP_HEIGHT = _countof(map);
@@ -71,7 +71,7 @@ const float FRAME_RATE = 120.0f;                // the target frame rate (frames
 const float MIN_FRAME_RATE = 10.0f;             // the minimum frame rate
 const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 frame
 const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calculations
-const float GRAVITY = 6.67428e-11f;             // gravitational constant
+const float GRAVITY = 9.81;                     // gravitational constant
 const float MASS_PLANET = 1.0e14f;
 const float MASS_SHIP = 5.0f;
 

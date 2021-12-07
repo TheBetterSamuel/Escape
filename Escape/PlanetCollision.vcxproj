@@ -93,6 +93,7 @@
     <ClCompile Include="image.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="planet.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="ship.cpp" />
     <ClCompile Include="spacewar.cpp" />
     <ClCompile Include="textureManager.cpp" />
@@ -107,7 +108,7 @@
     <ClInclude Include="image.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="planet.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="ship.h" />
     <ClInclude Include="spacewar.h" />
     <ClInclude Include="textureManager.h" />

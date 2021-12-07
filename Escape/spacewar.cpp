@@ -33,9 +33,24 @@ void Spacewar::initialize(HWND hwnd)
     if (!gameTextures.initialize(graphics,TEXTURES_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
 
+    if (!playerTexture.initialize(graphics, PLAYER_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing player textures"));
+    if (!groundTexture.initialize(graphics, GROUND_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ground textures"));
+    if (!finishboxTexture.initialize(graphics, FINISHBOX_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing finishbox textures"));
+    if (!killboxTexture.initialize(graphics, TEXTURES_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing killbox textures"));
+
     // planet
     if (!planet.initialize(this, planetNS::WIDTH, planetNS::HEIGHT, 2, &gameTextures))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing planet"));
+
+    //player
+    if (!player.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, 0, &playerTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing player"));
+    player.setX(GAME_WIDTH / 4);
+    player.setY(GAME_HEIGHT / 4);
 
     // ship
     if (!ship1.initialize(this, shipNS::WIDTH, shipNS::HEIGHT, shipNS::TEXTURE_COLS, &gameTextures))
@@ -62,9 +77,19 @@ void Spacewar::initialize(HWND hwnd)
 //=============================================================================
 void Spacewar::update()
 {
+
+    // checks kep presses for movement left and right
+    if (input->isKeyDown(0x41)) {
+        player.setVelocity(VECTOR2(-playerNS::SPEED, 0));
+    }
+    if (input->isKeyDown(0x44)) {
+        player.setVelocity(VECTOR2(playerNS::SPEED, 0));
+    }
+
     planet.update(frameTime);
     ship1.update(frameTime);
     ship2.update(frameTime);
+    player.update(frameTime);
 }
 
 //=============================================================================
@@ -114,6 +139,7 @@ void Spacewar::render()
     planet.draw();                          // add the planet to the scene
     ship1.draw();                           // add the spaceship to the scene
     ship2.draw();                           // add the spaceship to the scene
+    player.draw();
 
     graphics->spriteEnd();                  // end drawing sprites
 }
