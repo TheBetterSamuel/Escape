@@ -63,7 +63,7 @@ const float JUMP_DY = 20;   //starting dy of player when he jumps(decreases y g 
 const int MAP_HEIGHT = _countof(map);
 const int MAP_WIDTH = _countof(map[0]);
 const int BOX_SIZE = GAME_HEIGHT / MAP_HEIGHT;
-const int SPRITE_SCALE = BOX_SIZE / 16;
+const float SPRITE_SCALE = (float)BOX_SIZE / 16;
 
 // game
 const double PI = 3.14159265;

@@ -10,8 +10,6 @@
 #include "game.h"
 #include "textureManager.h"
 #include "image.h"
-#include "planet.h"
-#include "ship.h"
 #include "player.h"
 #include "ground.h"
 
@@ -22,14 +20,10 @@ class Spacewar : public Game
 {
 private:
     // game items
-    TextureManager gameTextures;    // game texture
-    //sprite texture Manager
     TextureManager playerTexture;
     TextureManager killboxTexture;
     TextureManager finishboxTexture;
     TextureManager groundTexture;
-    Ship    ship1, ship2;           // spaceships
-    Planet  planet;         // the planet
     Player player;          // the player
     Ground ground;          // the ground
 

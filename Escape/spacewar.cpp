@@ -30,9 +30,6 @@ void Spacewar::initialize(HWND hwnd)
     Game::initialize(hwnd); // throws GameError
 
     // main game textures
-    if (!gameTextures.initialize(graphics,TEXTURES_IMAGE))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
-
     if (!playerTexture.initialize(graphics, PLAYER_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing player textures"));
     if (!groundTexture.initialize(graphics, GROUND_IMAGE))
@@ -42,36 +39,17 @@ void Spacewar::initialize(HWND hwnd)
     if (!killboxTexture.initialize(graphics, TEXTURES_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing killbox textures"));
 
-    // planet
-    if (!planet.initialize(this, planetNS::WIDTH, planetNS::HEIGHT, 2, &gameTextures))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing planet"));
-
     // ground
     if (!ground.initialize(this, groundNS::WIDTH, groundNS::HEIGHT, 2, &groundTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ground"));
+    ground.setX(0);
+    ground.setY(GAME_HEIGHT - (BOX_SIZE));
 
     //player
     if (!player.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, 0, &playerTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing player"));
-    player.setX(GAME_WIDTH / 4);
-    player.setY(GAME_HEIGHT / 4);
-
-    // ship
-    if (!ship1.initialize(this, shipNS::WIDTH, shipNS::HEIGHT, shipNS::TEXTURE_COLS, &gameTextures))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ship1"));
-    ship1.setFrames(shipNS::SHIP1_START_FRAME, shipNS::SHIP1_END_FRAME);
-    ship1.setCurrentFrame(shipNS::SHIP1_START_FRAME);
-    ship1.setX(GAME_WIDTH/4);
-    ship1.setY(GAME_HEIGHT/4);
-    ship1.setVelocity(VECTOR2(shipNS::SPEED,-shipNS::SPEED)); // VECTOR2(X, Y)
-    // ship2
-    if (!ship2.initialize(this, shipNS::WIDTH, shipNS::HEIGHT, shipNS::TEXTURE_COLS, &gameTextures))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ship2"));
-    ship2.setFrames(shipNS::SHIP2_START_FRAME, shipNS::SHIP2_END_FRAME);
-    ship2.setCurrentFrame(shipNS::SHIP2_START_FRAME);
-    ship2.setX(GAME_WIDTH - GAME_WIDTH/4);
-    ship2.setY(GAME_HEIGHT/4);
-    ship2.setVelocity(VECTOR2(-shipNS::SPEED,-shipNS::SPEED)); // VECTOR2(X, Y)
+    player.setX(0);
+    player.setY(GAME_HEIGHT - (BOX_SIZE * 2));
 
     return;
 }
@@ -81,32 +59,32 @@ void Spacewar::initialize(HWND hwnd)
 //=============================================================================
 void Spacewar::update()
 {
-
-    // checks kep presses for movement left and right
-
-   
-
-    if (input->isKeyDown(A_KEY))            // if move right
+    //check if player is inside the map
+    if (player.getX() >= 0)
     {
-        player.setX(player.getX() - frameTime * playerNS::SPEED);
+        if (player.getX() <= (GAME_WIDTH - BOX_SIZE)) {
+            // checks kep presses for movement left and right
+            if (input->isKeyDown(A_KEY))            // if move right
+            {
+                player.setVelocity(VECTOR2(-playerNS::SPEED, 0));
+            }
+            else if (input->isKeyDown(D_KEY))            // if move right
+            {
+                player.setVelocity(VECTOR2(playerNS::SPEED, 0));
+            }
+            else {
+                player.setVelocity(VECTOR2(0, 0));
+            }
+        }
+        else {
+            player.setX(GAME_WIDTH - BOX_SIZE - 2);
+        }
     }
-    if (input->isKeyDown(D_KEY))            // if move right
-    {
-        player.setX(player.getX() + frameTime * playerNS::SPEED);
-    }
-    if (input->isKeyDown(S_KEY))            // if move right
-    {
-        player.setY(player.getY() + frameTime * playerNS::SPEED);
-    }
-    if (input->isKeyDown(W_KEY))            // if move right
-    {
-        player.setY(player.getY() - frameTime * playerNS::SPEED);
+    else {
+        player.setX(2);
     }
 
     ground.update(frameTime);
-    planet.update(frameTime);
-    ship1.update(frameTime);
-    ship2.update(frameTime);
     player.update(frameTime);
 }
 
@@ -121,41 +99,6 @@ void Spacewar::ai()
 //=============================================================================
 void Spacewar::collisions()
 {
-    VECTOR2 collisionVector;
-    // if collision between ship and planet
-    if(ship1.collidesWith(planet, collisionVector))
-    {
-        // bounce off planet
-        ship1.bounce(collisionVector, planet);
-        ship1.damage(PLANET);
-    }
-    if(ship2.collidesWith(planet, collisionVector))
-    {
-        // bounce off planet
-        ship2.bounce(collisionVector, planet);
-        ship2.damage(PLANET);
-    }
-    if (ship2.collidesWith(player, collisionVector))
-    {
-        // bounce off planet
-        ship2.bounce(collisionVector, player);
-        ship2.damage(SHIP);
-    }
-
-    if (player.collidesWith(ground, collisionVector)) {
-        player.bounce(collisionVector, ground);
-    }
-
-    // if collision between ships
-    if(ship1.collidesWith(ship2, collisionVector))
-    {
-        // bounce off ship
-        ship1.bounce(collisionVector, ship2);
-        ship1.damage(SHIP);
-        // change the direction of the collisionVector for ship2
-        ship2.bounce(collisionVector*-1, ship1);
-        ship2.damage(SHIP);
-    }
 }
 
 //=============================================================================
@@ -165,10 +108,7 @@ void Spacewar::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
 
-    planet.draw();                          // add the planet to the scene
     ground.draw();
-    ship1.draw();                           // add the spaceship to the scene
-    ship2.draw();                           // add the spaceship to the scene
     player.draw();
 
     graphics->spriteEnd();                  // end drawing sprites
@@ -180,7 +120,10 @@ void Spacewar::render()
 //=============================================================================
 void Spacewar::releaseAll()
 {
-    gameTextures.onLostDevice();
+    groundTexture.onLostDevice();
+    playerTexture.onLostDevice();
+    killboxTexture.onLostDevice();
+    finishboxTexture.onLostDevice();
     Game::releaseAll();
     return;
 }
@@ -191,7 +134,10 @@ void Spacewar::releaseAll()
 //=============================================================================
 void Spacewar::resetAll()
 {
-    gameTextures.onResetDevice();
+    groundTexture.onResetDevice();
+    playerTexture.onResetDevice();
+    killboxTexture.onResetDevice();
+    finishboxTexture.onResetDevice();
     Game::resetAll();
     return;
 }
