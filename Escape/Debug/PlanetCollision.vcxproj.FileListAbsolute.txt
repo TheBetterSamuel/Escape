@@ -1,5 +1,1 @@
-D:\School\GPP Programs\PlanetCollision(1)\PlanetCollision\Debug\PlanetCollision.exe
-D:\School\GPP Programs\GPPAsg\Escape\Debug\PlanetCollision.exe
-D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\Debug\PlanetCollision.exe
 D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\Debug\PlanetCollision.exe
-C:\Users\leeho\source\repos\Escape\Escape\Debug\PlanetCollision.exe

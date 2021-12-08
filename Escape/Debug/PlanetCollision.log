@@ -1,5 +1,48 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  winmain.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+  textureManager.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
   spacewar.cpp
 D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+  ground.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\ground.cpp(18,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\ground.cpp(19,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  player.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\player.cpp(18,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\player.cpp(19,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  killbox.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\killbox.cpp(18,41): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\killbox.cpp(19,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  input.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+  image.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+  graphics.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+  game.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+  finishbox.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\finishbox.cpp(18,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\finishbox.cpp(19,45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  entity.cpp
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.cpp(331,48): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.cpp(331,25): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.cpp(332,49): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.cpp(332,22): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\entity.cpp(434,52): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+entity.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   PlanetCollision.vcxproj -> D:\Y2 Sem 2\Portfolio DEV\code\Escape\Escape\Debug\PlanetCollision.exe
