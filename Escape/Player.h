@@ -15,7 +15,7 @@ namespace playerNS
     const float SPEED = MOVESPEED;          // Move based on move speed from constants.h
     const float SCALE = SPRITE_SCALE;       // Scaling up sprites to fit map
     const float G = entityNS::GRAVITY;      // Gravitional constant
-    const int COLLISION_DIST = (BOX_SIZE/4)-2; // Distance from center of player to edge of player, with 2 pixels of leeway
+    const int COLLISION_DIST = (BOX_SIZE / 4) - 2; // Distance from center of player to edge of player, with 2 pixels of leeway
     const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
     const int Y = GAME_HEIGHT / 2 - HEIGHT / 2;
     const float MASS = 3000000.0f;              // mass

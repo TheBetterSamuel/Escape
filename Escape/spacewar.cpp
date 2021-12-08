@@ -36,7 +36,7 @@ void Spacewar::initialize(HWND hwnd)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ground textures"));
     if (!finishboxTexture.initialize(graphics, FINISHBOX_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing finishbox textures"));
-    if (!killboxTexture.initialize(graphics, TEXTURES_IMAGE))
+    if (!killboxTexture.initialize(graphics, KILLBOX_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing killbox textures"));
 
     // ground
