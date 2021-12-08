@@ -7,6 +7,7 @@
 #define _SPACEWAR_H             // file is included in more than one place
 #define WIN32_LEAN_AND_MEAN
 
+#include <vector>
 #include "game.h"
 #include "textureManager.h"
 #include "image.h"
@@ -26,10 +27,12 @@ private:
     TextureManager killboxTexture;
     TextureManager finishboxTexture;
     TextureManager groundTexture;
-    Player player;          // the player
-    Ground ground;          // the ground
-    Killbox killbox;        // the killbox
-    Finishbox finishbox;    // the finishbox
+    Player player;                           // the player
+    Finishbox finishbox;                     // the finishbox
+    std::vector<Ground> groundList;        // the ground
+    std::vector<Killbox> kBoxList;        // the killbox
+    std::vector<Player> playerList;        // the killbox
+    std::vector<Finishbox> fBoxList;        // the killbox
 
 public:
     // Constructor

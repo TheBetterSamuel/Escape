@@ -47,6 +47,30 @@ void Player::draw()
 //=============================================================================
 void Player::update(float frameTime)
 {
+    //check if player is inside the map
+    if (spriteData.x >= 0)
+    {
+        if (spriteData.x <= (GAME_WIDTH - BOX_SIZE)) {
+            // checks kep presses for movement left and right
+            if (input->isKeyDown(A_KEY))            // if move right
+            {
+                velocity.x = -playerNS::SPEED;
+            }
+            else if (input->isKeyDown(D_KEY))            // if move right
+            {
+                velocity.x = playerNS::SPEED;
+            }
+            else {
+                velocity.x = 0;
+            }
+        }
+        else {
+            spriteData.x = (GAME_WIDTH - BOX_SIZE - 2);
+        }
+    }
+    else {
+        spriteData.x = 2;
+    }
     Entity::update(frameTime);
     spriteData.x += frameTime * velocity.x;         // move ship along X 
     spriteData.y += frameTime * velocity.y;         // move ship along Y

@@ -39,30 +39,52 @@ void Spacewar::initialize(HWND hwnd)
     if (!killboxTexture.initialize(graphics, KILLBOX_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing killbox textures"));
 
-    // ground
-    if (!ground.initialize(this, groundNS::WIDTH, groundNS::HEIGHT, 2, &groundTexture))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ground"));
-    ground.setX(0);
-    ground.setY(GAME_HEIGHT - (BOX_SIZE));
-
-    //player
-    if (!player.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, 0, &playerTexture))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing player"));
-    player.setX(0);
-    player.setY(GAME_HEIGHT - (BOX_SIZE * 2));
-
-    // killbox
-    if (!killbox.initialize(this, killboxNS::WIDTH, killboxNS::HEIGHT, 2, &killboxTexture))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing killbox"));
-    killbox.setX(0);
-    killbox.setY(GAME_HEIGHT - (BOX_SIZE) - 100);
-
-    // finishbox
-    if (!finishbox.initialize(this, finishboxNS::WIDTH, finishboxNS::HEIGHT, 2, &finishboxTexture))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing finishbox"));
-    finishbox.setX(0);
-    finishbox.setY(GAME_HEIGHT - (BOX_SIZE) - 200);
-
+    //clears list of sprites before drawing
+    playerList.clear();
+    groundList.clear();
+    kBoxList.clear();
+    fBoxList.clear();
+    //drawing the map
+    for (int i = 0; i < MAP_HEIGHT; i++) {
+        for (int j = 0; j < MAP_WIDTH; j++) {
+            //ground
+            if (MAP[i][j] == 'G') {
+                Ground ground;
+                if (!ground.initialize(this, groundNS::WIDTH, groundNS::HEIGHT, 0, &groundTexture))
+                    throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ground"));
+                ground.setX(j * BOX_SIZE);
+                ground.setY(i * BOX_SIZE);
+                groundList.push_back(ground);
+            }
+            //killbox
+             else if (MAP[i][j] == 'D') {
+                Killbox killbox;
+                if (!killbox.initialize(this, killboxNS::WIDTH, killboxNS::HEIGHT, 0, &killboxTexture))
+                    throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing killbox"));
+                killbox.setX(j * BOX_SIZE);
+                killbox.setY(i * BOX_SIZE);
+                kBoxList.push_back(killbox);
+            }
+            //finishbox
+            else if (MAP[i][j] == 'F') {
+                Finishbox finishbox;
+                if (!finishbox.initialize(this, finishboxNS::WIDTH, finishboxNS::HEIGHT, 0, &finishboxTexture))
+                    throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing finishbox"));
+                finishbox.setX(j * BOX_SIZE);
+                finishbox.setY(i * BOX_SIZE);
+                fBoxList.push_back(finishbox);
+            }
+            //player
+            else if (MAP[i][j] == 'P') {
+                Player player;
+                if (!player.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, 0, &playerTexture))
+                    throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing player"));
+                player.setX(j * BOX_SIZE);
+                player.setY(i * BOX_SIZE);
+                playerList.push_back(player);
+            }
+        }
+    }
     return;
 }
 
@@ -71,35 +93,19 @@ void Spacewar::initialize(HWND hwnd)
 //=============================================================================
 void Spacewar::update()
 {
-    //check if player is inside the map
-    if (player.getX() >= 0)
-    {
-        if (player.getX() <= (GAME_WIDTH - BOX_SIZE)) {
-            // checks kep presses for movement left and right
-            if (input->isKeyDown(A_KEY))            // if move right
-            {
-                player.setVelocity(VECTOR2(-playerNS::SPEED, 0));
-            }
-            else if (input->isKeyDown(D_KEY))            // if move right
-            {
-                player.setVelocity(VECTOR2(playerNS::SPEED, 0));
-            }
-            else {
-                player.setVelocity(VECTOR2(0, 0));
-            }
-        }
-        else {
-            player.setX(GAME_WIDTH - BOX_SIZE - 2);
-        }
-    }
-    else {
-        player.setX(2);
-    }
 
-    ground.update(frameTime);
-    player.update(frameTime);
-    killbox.update(frameTime);
-    finishbox.update(frameTime);
+    for (int g = 0; g < groundList.size(); g++) {
+        groundList[g].update(frameTime);
+    }
+    for (int k = 0; k < kBoxList.size(); k++) {
+        kBoxList[k].update(frameTime);
+    }
+    for (int f = 0; f < fBoxList.size(); f++) {
+        fBoxList[f].update(frameTime);
+    }
+    for (int p = 0; p < playerList.size(); p++) {
+        playerList[p].update(frameTime);
+    }
 }
 
 //=============================================================================
@@ -122,10 +128,19 @@ void Spacewar::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
 
-    ground.draw();
-    player.draw();
-    killbox.draw();
-    finishbox.draw();
+
+    for (int g = 0; g < groundList.size(); g++) {
+        groundList[g].draw();
+    }
+    for (int k = 0; k < kBoxList.size(); k++) {
+        kBoxList[k].draw();
+    }
+    for (int f = 0; f < fBoxList.size(); f++) {
+        fBoxList[f].draw();
+    }
+    for (int p = 0; p < playerList.size(); p++) {
+        playerList[p].draw();
+    }
 
     graphics->spriteEnd();                  // end drawing sprites
 }
