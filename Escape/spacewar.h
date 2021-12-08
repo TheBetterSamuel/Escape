@@ -12,6 +12,8 @@
 #include "image.h"
 #include "player.h"
 #include "ground.h"
+#include "killbox.h"
+#include "finishbox.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -26,6 +28,8 @@ private:
     TextureManager groundTexture;
     Player player;          // the player
     Ground ground;          // the ground
+    Killbox killbox;        // the killbox
+    Finishbox finishbox;    // the finishbox
 
 public:
     // Constructor

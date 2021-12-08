@@ -51,6 +51,18 @@ void Spacewar::initialize(HWND hwnd)
     player.setX(0);
     player.setY(GAME_HEIGHT - (BOX_SIZE * 2));
 
+    // killbox
+    if (!killbox.initialize(this, killboxNS::WIDTH, killboxNS::HEIGHT, 2, &killboxTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing killbox"));
+    killbox.setX(0);
+    killbox.setY(GAME_HEIGHT - (BOX_SIZE) - 100);
+
+    // finishbox
+    if (!finishbox.initialize(this, finishboxNS::WIDTH, finishboxNS::HEIGHT, 2, &finishboxTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing finishbox"));
+    finishbox.setX(0);
+    finishbox.setY(GAME_HEIGHT - (BOX_SIZE) - 200);
+
     return;
 }
 
@@ -86,6 +98,8 @@ void Spacewar::update()
 
     ground.update(frameTime);
     player.update(frameTime);
+    killbox.update(frameTime);
+    finishbox.update(frameTime);
 }
 
 //=============================================================================
@@ -110,6 +124,8 @@ void Spacewar::render()
 
     ground.draw();
     player.draw();
+    killbox.draw();
+    finishbox.draw();
 
     graphics->spriteEnd();                  // end drawing sprites
 }

@@ -1,5 +1,5 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
   spacewar.cpp
-D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-  PlanetCollision.vcxproj -> D:\School\GPP Programs\GPP Assignment 1\Escape\Escape\Debug\PlanetCollision.exe
+C:\Users\leeho\source\repos\Escape\Escape\constants.h(74,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\leeho\source\repos\Escape\Escape\entity.h(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+  PlanetCollision.vcxproj -> C:\Users\leeho\Source\Repos\Escape\Escape\Debug\PlanetCollision.exe
