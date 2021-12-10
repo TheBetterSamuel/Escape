@@ -12,3 +12,19 @@ A ssimple game made for the submission of Gameplay Programming (GPP) Assignment 
 
 ## Languaged Used
 C++
+
+##Contributions
+### Samuel Kwan 
+* Map Drawing
+* Base Engine
+* Player Entity
+* Player Movement and Jump (using Gravity)
+* Sprite Drawing (Player, Killbox, Finishbox)
+* Game Logic Programming
+
+### Chus Xuan Wei
+*Fixed code for Killbox Entity
+
+### Lee Hong Yih
+* Drawing Sprite (Ground)
+* Finishbox (completed) and Killbox (partially) Entity 

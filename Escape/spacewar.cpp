@@ -119,6 +119,15 @@ void Spacewar::ai()
 //=============================================================================
 void Spacewar::collisions()
 {
+    if (player.getOnGround() == false) {
+        for (int i = 0; i < groundList.size(); i++) {
+            Ground ground = groundList[i];
+            if ((player.getY() + BOX_SIZE) > ground.getY()) {
+                player.setOnGround(true);
+                player.setY(ground.getY() - BOX_SIZE - 4);
+            }
+        }
+    }
 }
 
 //=============================================================================

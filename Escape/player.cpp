@@ -75,10 +75,12 @@ void Player::update(float frameTime)
 
     //jumping 
     if (onGround) {
-        velocity.y = 0;
-        if (input->wasKeyPressed(W_KEY)) {
+        if (input->isKeyDown(W_KEY)) {
             velocity.y = -JUMP_DY;
             onGround = false;
+        }
+        else {
+            velocity.y = 0;
         }
     }
     else {

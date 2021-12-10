@@ -35,8 +35,16 @@ public:
     virtual void draw();
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols, TextureManager* textureM);
     void update(float frameTime);
+
+    // set and set onGround
     virtual bool getOnGround() const { return onGround; }
     virtual void setOnGround(bool onground) { onGround = onground; }
+
+    //get and set velocity.x and velocity.y
+    virtual float getVelX() const { return velocity.x; }
+    virtual void setVelX(float VelX) { velocity.x = VelX; }
+    virtual float getVelY() const { return velocity.y; }
+    virtual void setVelY(float VelY) { velocity.y = VelY; }
 };
 #endif
 
