@@ -57,8 +57,8 @@ const char MAP[18][32] = {
     {'G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G','G'}
 };
 
-const float MOVESPEED = 200;  //movement speed of the player
-const float JUMP_DY = 20;   //starting dy of player when he jumps(decreases y g per second_)
+const float MOVESPEED = 500;  //movement speed of the player
+const float JUMP_DY = 500;   //starting dy of player when he jumps(decreases y g per second_)
 
 const int MAP_HEIGHT = _countof(MAP);
 const int MAP_WIDTH = _countof(MAP[0]);

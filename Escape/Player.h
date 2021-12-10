@@ -18,12 +18,15 @@ namespace playerNS
     const int COLLISION_DIST = (BOX_SIZE / 4) - 2; // Distance from center of player to edge of player, with 2 pixels of leeway
     const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
     const int Y = GAME_HEIGHT / 2 - HEIGHT / 2;
-    const float MASS = 3000000.0f;              // mass
+    const float MASS = 3000.0f;              // mass
+    const bool ONGROUND = true;
 }
 
 // inherits from Entity class
 class Player : public Entity
 {
+private:
+    bool onGround;
 public:
     // constructor
     Player();
@@ -32,6 +35,8 @@ public:
     virtual void draw();
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols, TextureManager* textureM);
     void update(float frameTime);
+    virtual bool getOnGround() const { return onGround; }
+    virtual void setOnGround(bool onground) { onGround = onground; }
 };
 #endif
 

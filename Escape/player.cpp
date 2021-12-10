@@ -22,6 +22,7 @@ Player::Player() : Entity()
     spriteData.rect.bottom = playerNS::HEIGHT;    // rectangle to select parts of an image
     spriteData.rect.right = playerNS::WIDTH;
     mass = playerNS::MASS;
+    onGround = playerNS::ONGROUND;
 }
 
 //=============================================================================
@@ -70,6 +71,18 @@ void Player::update(float frameTime)
     }
     else {
         spriteData.x = 2;
+    }
+
+    //jumping 
+    if (onGround) {
+        velocity.y = 0;
+        if (input->wasKeyPressed(W_KEY)) {
+            velocity.y = -JUMP_DY;
+            onGround = false;
+        }
+    }
+    else {
+        velocity.y += playerNS::G * frameTime;
     }
     Entity::update(frameTime);
     spriteData.x += frameTime * velocity.x;         // move ship along X 
