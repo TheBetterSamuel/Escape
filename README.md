@@ -24,6 +24,9 @@ C++
 
 ### Chus Xuan Wei
 *Fixed code for Killbox Entity
+*Implemented the Ground Entity
+*Collision with Ground
+*Player Movement (No gravity)
 
 ### Lee Hong Yih
 * Drawing Sprite (Ground)
