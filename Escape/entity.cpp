@@ -396,13 +396,13 @@ void Entity::damage(int weapon)
 //=============================================================================
 // Entity bounces after collision with another entity
 //=============================================================================
-void Entity::bounce(VECTOR2 &collisionVector, Entity &ent)
+void Entity::bounce(VECTOR2 &collisionVector, Entity &ent, float bounceRatio)
 {
     VECTOR2 Vdiff = ent.getVelocity() - velocity;
     VECTOR2 cUV = collisionVector;              // collision unit vector
     Graphics::Vector2Normalize(&cUV);
     float cUVdotVdiff = Graphics::Vector2Dot(&cUV, &Vdiff);
-    float massRatio = 2.0f;
+    float massRatio = bounceRatio;
     if (getMass() != 0)
         massRatio *= (ent.getMass() / (getMass() + ent.getMass()));
 

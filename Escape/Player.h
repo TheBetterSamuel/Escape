@@ -27,6 +27,7 @@ class Player : public Entity
 {
 private:
     bool onGround;
+
 public:
     // constructor
     Player();

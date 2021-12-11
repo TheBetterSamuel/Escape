@@ -49,6 +49,7 @@ void Player::draw()
 void Player::update(float frameTime)
 {
     //check if player is inside the map
+    if (!input || !graphics) return;
     if (spriteData.x >= 0)
     {
         if (spriteData.x <= (GAME_WIDTH - BOX_SIZE)) {
@@ -74,18 +75,7 @@ void Player::update(float frameTime)
     }
 
     //jumping 
-    if (onGround) {
-        if (input->isKeyDown(W_KEY)) {
-            velocity.y = -JUMP_DY;
-            onGround = false;
-        }
-        else {
-            velocity.y = 0;
-        }
-    }
-    else {
-        velocity.y += playerNS::G * frameTime;
-    }
+    
     Entity::update(frameTime);
     spriteData.x += frameTime * velocity.x;         // move ship along X 
     spriteData.y += frameTime * velocity.y;         // move ship along Y
