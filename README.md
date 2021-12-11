@@ -10,7 +10,7 @@ A ssimple game made for the submission of Gameplay Programming (GPP) Assignment 
 |Chua Xuan Wei|S10203077|Developer|
 |Lee Hong Yih|S10185009|Developer|
 
-## Languaged Used
+## Languages Used
 C++
 
 ##Contributions
